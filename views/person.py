@@ -12,7 +12,7 @@ from views.confirmationDialogs import ConfirmDeletionDialog
 class AddPersonDialog(EditorDialog):
 
     def __init__(self, parent: QWidget):
-        super(AddPersonDialog, self).__init__(parent=parent, ui_file_name="ui/personEditor.ui")
+        super(AddPersonDialog, self).__init__(parent=parent, ui_file_name="ui/toolboxEditor.ui")
 
         self.get_widget(QLabel, "editorTitle").setText(self.tr("Add Person"))
 
@@ -46,7 +46,7 @@ class AddPersonDialog(EditorDialog):
 class PersonEditorWidget(EditorWidget):
 
     def __init__(self, item_id=None):
-        super(PersonEditorWidget, self).__init__(ui_file_name="ui/personEditor.ui", item_id=item_id)
+        super(PersonEditorWidget, self).__init__(ui_file_name="ui/toolboxEditor.ui", item_id=item_id)
 
         self.firstname_edit = self.widget.firstNameEdit
         self.lastname_edit = self.widget.lastNameEdit

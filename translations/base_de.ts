@@ -78,7 +78,7 @@
         <location filename="../ui/encryptEditor.ui" line="14"/>
         <location filename="../ui/loginPrompt.ui" line="14"/>
         <location filename="../ui/optionsEditor.ui" line="14"/>
-        <location filename="../ui/personEditor.ui" line="14"/>
+        <location filename="../ui/toolboxEditor.ui" line="14"/>
         <source>Form</source>
         <translation>Formular</translation>
     </message>
@@ -123,22 +123,22 @@
         <translation>Theme</translation>
     </message>
     <message>
-        <location filename="../ui/personEditor.ui" line="32"/>
+        <location filename="../ui/toolboxEditor.ui" line="32"/>
         <source>Edit Person</source>
         <translation>Person bearbeiten</translation>
     </message>
     <message>
-        <location filename="../ui/personEditor.ui" line="41"/>
+        <location filename="../ui/toolboxEditor.ui" line="41"/>
         <source>First Name</source>
         <translation>Vorname</translation>
     </message>
     <message>
-        <location filename="../ui/personEditor.ui" line="51"/>
+        <location filename="../ui/toolboxEditor.ui" line="51"/>
         <source>Last Name</source>
         <translation>Nachname</translation>
     </message>
     <message>
-        <location filename="../ui/personEditor.ui" line="61"/>
+        <location filename="../ui/toolboxEditor.ui" line="61"/>
         <source>E-Mail</source>
         <translation>E-Mail</translation>
     </message>
