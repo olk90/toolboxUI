@@ -11,7 +11,7 @@ from sqlalchemy.orm import Session
 
 from logic import configure_file_handler
 from logic.config import properties
-from logic.model import create_tables, Person, InventoryItem, Base, VersionInfo, EncryptionState
+from logic.model import create_tables, Base, VersionInfo
 
 rfh: RotatingFileHandler = configure_file_handler("database")
 
@@ -118,23 +118,7 @@ def delete_item(item: Base):
     logger.info("Removed entry from database: %s", item)
 
 
-def update_inventory(value_dict: dict):
-    s = properties.open_session()
-    item_id = value_dict["item_id"]
-    item: InventoryItem = s.query(InventoryItem).filter_by(id=item_id).first()
-    item.name = value_dict["name"]
-    item.category = value_dict["category"]
-    item.info = value_dict["info"]
-    item.mot_required = value_dict["mot_required"]
-    item.next_mot = value_dict["next_mot"]
-    item.available = value_dict["available"]
-
-    lender_id = value_dict["lender"]
-    item.lender_id = lender_id
-    s.commit()
-
-
-def update_person(value_dict: dict):
+def update_toolbox(value_dict: dict):
     s = properties.open_session()
     person: Person = s.query(Person).filter_by(id=value_dict["item_id"]).first()
     person.firstname = value_dict["firstname"]
@@ -147,11 +131,4 @@ def update_version_info(version: int):
     s = properties.open_session()
     vi = s.query(VersionInfo).first()
     vi.version = version
-    s.commit()
-
-
-def set_encryption_state(state: bool):
-    s = properties.open_session()
-    es = s.query(EncryptionState).first()
-    es.encryption_state = state
     s.commit()

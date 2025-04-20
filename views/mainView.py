@@ -1,10 +1,10 @@
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtWidgets import QMainWindow, QVBoxLayout, QWidget
 
-from logic.table_models import PersonModel
+from logic.table_models import ToolboxModel
 from views.base_classes import OptionsEditorDialog, TableDialog, EncryptEditorDialog
 from views.helpers import load_ui_file
-from views.person import PersonWidget
+from views.toolbox import ToolboxWidget
 
 
 class MainWindow(QMainWindow):
@@ -45,7 +45,7 @@ class MainWindow(QMainWindow):
         tabview = self.widget.tabview
 
         # example:
-        person_widget = PersonWidget()
+        person_widget = ToolboxWidget()
         tabview.addTab(person_widget, self.tr("Persons"))
 
         self.tabview.currentChanged.connect(self.reload_current_widget)
@@ -55,8 +55,8 @@ class MainWindow(QMainWindow):
         if isinstance(current, TableDialog):
             search = current.search_line.text()
             # example
-            if isinstance(current, PersonWidget):
-                current.reload_table_contents(PersonModel(search))
+            if isinstance(current, ToolboxWidget):
+                current.reload_table_contents(ToolboxModel(search))
 
     def configure_buttons(self):
         self.widget.loadDbButton.clicked.connect(self.load_access_history)

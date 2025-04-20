@@ -1,12 +1,9 @@
-from sqlalchemy import (Column, Integer, String, Boolean, Date, ForeignKey)
+from sqlalchemy import (Column, Integer, String, Boolean, Date)
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship
 
 Base = declarative_base()
 toolboxTableName = "Toolbox"
-inventoryTableName = "InventoryItem"
 versionInfoTableName = "VersionInfo"
-encryptionStateName = "EncryptionState"
 
 
 class Toolbox(Base):
@@ -28,13 +25,6 @@ class VersionInfo(Base):
 
     id = Column(Integer, primary_key=True)
     version = Column(Integer, nullable=False, default=0)
-
-
-class EncryptionState(Base):
-    __tablename__ = encryptionStateName
-
-    id = Column(Integer, primary_key=True)
-    encryption_state = Column(Boolean, nullable=False)
 
 
 def create_tables(engine):

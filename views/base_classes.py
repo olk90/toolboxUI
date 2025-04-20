@@ -13,8 +13,6 @@ from PySide6.QtWidgets import QDialog, QWidget, QDialogButtonBox, QHBoxLayout, Q
     QToolButton, QPushButton, QStyle
 
 from logic.config import properties
-from logic.crypt import decrypt_persons, encrypt_persons, generate_key
-from logic.database import set_encryption_state
 from logic.table_models import SearchTableModel
 from views.base_functions import load_ui_file
 from views.confirmationDialogs import ConfirmRestartDialog
@@ -134,8 +132,7 @@ class EncryptEditorDialog(EditorDialog):
         self.widget.toggle_buttons(True)
 
     def generate_key(self):
-        key = generate_key()
-        self.key_edit.setText(key)
+        pass
 
     def encrypt_database(self):
         key = properties.encryption_key
@@ -148,9 +145,7 @@ class EncryptEditorDialog(EditorDialog):
 
     @staticmethod
     def encrypt(key):
-        from logic.database import set_encryption_state
-        encrypt_persons(key)
-        set_encryption_state(True)
+        pass
 
     def decrypt_database(self):
         key = properties.encryption_key
@@ -163,8 +158,7 @@ class EncryptEditorDialog(EditorDialog):
 
     @staticmethod
     def decrypt(key):
-        decrypt_persons(key)
-        set_encryption_state(False)
+        pass
 
     def copy_to_clipboard(self):
         app = QApplication.instance()

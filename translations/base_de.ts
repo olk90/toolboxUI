@@ -4,7 +4,7 @@
 <context>
     <name>AddPersonDialog</name>
     <message>
-        <location filename="../views/person.py" line="17"/>
+        <location filename="../views/toolbox.py" line="17"/>
         <source>Add Person</source>
         <translation>Person hinzufügen</translation>
     </message>
