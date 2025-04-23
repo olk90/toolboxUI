@@ -1,8 +1,12 @@
+altgraph==0.17.4
 cffi==1.17.1
 cryptography==44.0.2
 darkdetect==0.7.1
 greenlet==3.1.1
+packaging==25.0
 pycparser==2.22
+pyinstaller==6.13.0
+pyinstaller-hooks-contrib==2025.3
 PyQt6==6.9.0
 PyQt6-Qt6==6.9.0
 PyQt6_sip==13.10.0
