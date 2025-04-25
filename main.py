@@ -26,6 +26,7 @@ if __name__ == "__main__":
     images_model = QStandardItemModel()
     images_table.setModel(images_model)
     images_layout.addWidget(images_label)
+    images_table.verticalHeader().setVisible(False)
     images_layout.addWidget(images_table)
     tab_widget.addTab(images_tab, "Images")
 
@@ -37,6 +38,7 @@ if __name__ == "__main__":
     containers_model = QStandardItemModel()
     containers_table.setModel(containers_model)
     containers_layout.addWidget(containers_label)
+    containers_table.verticalHeader().setVisible(False)
     containers_layout.addWidget(containers_table)
 
     # Add a button below the containers table
