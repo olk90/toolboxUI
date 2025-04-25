@@ -2,7 +2,7 @@ import shutil
 import subprocess
 
 
-def enter_selected_container(selection_model):
+def enter_container(selection_model):
     if not selection_model.hasSelection():
         print("No container selected.")
         return
@@ -13,10 +13,10 @@ def enter_selected_container(selection_model):
         print("Failed to retrieve container name.")
         return
 
-    spawn_terminal_with_command(f"toolbox enter {container_name}")
+    exec_(f"toolbox enter {container_name}")
 
 
-def spawn_terminal_with_command(command):
+def exec_(command):
     """
     Spawn a terminal emulator and execute the specified command.
 
