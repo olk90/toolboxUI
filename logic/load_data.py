@@ -1,7 +1,7 @@
 import subprocess
 
 from PyQt6.QtGui import QStandardItem
-from PyQt6.QtWidgets import QTableView
+from PyQt6.QtWidgets import QTableView, QHeaderView
 
 
 def load_data(images_model, containers_model, images_table, containers_table):
@@ -69,11 +69,11 @@ def load_data(images_model, containers_model, images_table, containers_table):
 
         # Resize columns to content
         images_table.resizeColumnsToContents()
-        images_table.horizontalHeader().setStretchLastSection(True)
+        images_table.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Stretch)
         images_table.setSelectionBehavior(QTableView.SelectionBehavior.SelectRows)
 
         containers_table.resizeColumnsToContents()
-        containers_table.horizontalHeader().setStretchLastSection(True)
+        containers_table.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Stretch)
         containers_table.setSelectionBehavior(QTableView.SelectionBehavior.SelectRows)
 
     except subprocess.CalledProcessError as e:
