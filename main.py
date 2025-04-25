@@ -1,9 +1,8 @@
 import sys
 
-from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QStandardItemModel
 from PyQt6.QtWidgets import (QApplication, QWidget, QVBoxLayout,
-                             QTableView, QLabel, QSplitter, QPushButton)
+                             QTableView, QLabel, QPushButton, QTabWidget)
 
 from logic.button_functions import enter_selected_container
 from logic.load_data import load_data
@@ -15,22 +14,24 @@ if __name__ == "__main__":
     # Create layout and widgets
     main_layout = QVBoxLayout()
 
-    # Create a splitter to hold both tables
-    splitter = QSplitter(Qt.Orientation.Horizontal)
+    # Create a tab widget to hold both tables
+    tab_widget = QTabWidget()
+    tab_widget.setTabPosition(QTabWidget.TabPosition.West)
 
-    # Container for images table
-    images_container = QWidget()
-    images_layout = QVBoxLayout(images_container)
+    # Tab for images table
+    images_tab = QWidget()
+    images_layout = QVBoxLayout(images_tab)
     images_label = QLabel("<b>Images</b>")
     images_table = QTableView()
     images_model = QStandardItemModel()
     images_table.setModel(images_model)
     images_layout.addWidget(images_label)
     images_layout.addWidget(images_table)
+    tab_widget.addTab(images_tab, "Images")
 
-    # Container for containers table
-    containers_container = QWidget()
-    containers_layout = QVBoxLayout(containers_container)
+    # Tab for containers table
+    containers_tab = QWidget()
+    containers_layout = QVBoxLayout(containers_tab)
     containers_label = QLabel("<b>Containers</b>")
     containers_table = QTableView()
     containers_model = QStandardItemModel()
@@ -41,13 +42,10 @@ if __name__ == "__main__":
     # Add a button below the containers table
     enter_container_button = QPushButton("Enter")
     containers_layout.addWidget(enter_container_button)
-
-    # Add containers to splitter
-    splitter.addWidget(images_container)
-    splitter.addWidget(containers_container)
+    tab_widget.addTab(containers_tab, "Containers")
 
     # Add widgets to main layout
-    main_layout.addWidget(splitter)
+    main_layout.addWidget(tab_widget)
     window.setLayout(main_layout)
 
     # Connect button click to slot
@@ -58,6 +56,6 @@ if __name__ == "__main__":
 
     # Set window properties
     window.setWindowTitle("Toolbox UI")
-    window.resize(800, 500)  # Larger size to accommodate two tables
+    window.resize(1600, 900)
     window.show()
     sys.exit(app.exec())
