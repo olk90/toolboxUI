@@ -1,11 +1,11 @@
 import sys
 
-from PyQt6.QtGui import QStandardItemModel
 from PyQt6.QtWidgets import (QApplication, QWidget, QVBoxLayout,
-                             QTableView, QLabel, QPushButton, QTabWidget)
+                             QTabWidget)
 
-from logic.button_functions import enter_selected_container
 from logic.load_data import load_data
+from views.container import ContainersTab
+from views.images import ImagesTab
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
@@ -19,42 +19,19 @@ if __name__ == "__main__":
     tab_widget.setTabPosition(QTabWidget.TabPosition.West)
 
     # Tab for images table
-    images_tab = QWidget()
-    images_layout = QVBoxLayout(images_tab)
-    images_label = QLabel("<b>Images</b>")
-    images_table = QTableView()
-    images_model = QStandardItemModel()
-    images_table.setModel(images_model)
-    images_layout.addWidget(images_label)
-    images_table.verticalHeader().setVisible(False)
-    images_layout.addWidget(images_table)
-    tab_widget.addTab(images_tab, "Images")
+    it = ImagesTab()
+    tab_widget.addTab(it, "Images")
 
     # Tab for containers table
-    containers_tab = QWidget()
-    containers_layout = QVBoxLayout(containers_tab)
-    containers_label = QLabel("<b>Containers</b>")
-    containers_table = QTableView()
-    containers_model = QStandardItemModel()
-    containers_table.setModel(containers_model)
-    containers_layout.addWidget(containers_label)
-    containers_table.verticalHeader().setVisible(False)
-    containers_layout.addWidget(containers_table)
-
-    # Add a button below the containers table
-    enter_container_button = QPushButton("Enter")
-    containers_layout.addWidget(enter_container_button)
-    tab_widget.addTab(containers_tab, "Containers")
+    ct = ContainersTab()
+    tab_widget.addTab(ct, "Containers")
 
     # Add widgets to main layout
     main_layout.addWidget(tab_widget)
     window.setLayout(main_layout)
 
-    # Connect button click to slot
-    enter_container_button.clicked.connect(lambda x: enter_selected_container(containers_table.selectionModel()))
-
     # load data on app launch
-    load_data(images_model, containers_model, images_table, containers_table)
+    load_data(it.images_model, ct.containers_model, it.images_table, ct.containers_table)
 
     # Set window properties
     window.setWindowTitle("Toolbox UI")
